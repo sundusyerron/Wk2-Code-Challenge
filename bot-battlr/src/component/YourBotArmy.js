@@ -3,7 +3,6 @@ import BotCard from "./BotCard";
 
 function YourBotArmy({ yourBots, addBotToArmy, handleDelete }) {
 
-
   return (
     <div className="ui segment inverted olive bot-army">
       <div className="ui five column grid">
