@@ -7,25 +7,33 @@ const botTypeClasses = {
   Witch: "icon magic",
   Captain: "icon star",
 };
-
-function BotCard({ bot  , /*handleAdd,*/ handleDelete, addBotToArmy}) {
+function BotCard({ bot, botArmy, setBotArmy, setIsActive }) {
  
-  return (
-    <div className="ui column" id={bot.id}>
-      <div className="ui card" key={bot.id} id={bot.id} onClick={() => addBotToArmy(bot)}>
-        <div className="image">
+  function handleClick() {
+    if (botArmy.find((botArm) => botArm.id === bot.id)) {
+      setBotArmy((army) => army.filter((botArm) => botArm.id !== bot.id));
+    } 
+    else {
+      setIsActive(bot)
+    }
+  }
+
+  return(
+    <div className="ui column">
+      <div className="ui card" key={bot.id}>
+        <div className="image" onClick={handleClick}>
           <img alt="oh no!" src={bot.avatar_url} />
-        </div>
-        <div className="content">
-          <div className="header">
-            {bot.name}
-            <i className={botTypeClasses[bot.bot_class]} />
           </div>
-          <div className="meta text-wrap">
+          <div className="content">
+          <div className="header">
+          {bot.name}
+            <i className={botTypeClasses[bot.bot_class]} />
+            </div>
+            <div className="meta text-wrap">
             <small>{bot.catchphrase}</small>
           </div>
-        </div>
-        <div className="extra content">
+          </div>
+          <div className="extra content">
           <span>
             <i className="icon heartbeat" />
             {bot.health}
@@ -36,13 +44,12 @@ function BotCard({ bot  , /*handleAdd,*/ handleDelete, addBotToArmy}) {
             {bot.damage}
           </span>
           <span>
-            <i className="icon shield" />
-            {bot.armor}
-          </span>
-          <span>
-            <div className="ui center aligned segment basic">
-              <button id ={bot.id} className="ui mini red button" onClick={() => handleDelete(bot)}>
-                
+              <i className="icon shield" />
+              {bot.armor}
+              </span>
+              <span>
+              <div className="ui center aligned segment basic">
+              <button className="ui mini red button">
               </button>
             </div>
           </span>
@@ -51,5 +58,6 @@ function BotCard({ bot  , /*handleAdd,*/ handleDelete, addBotToArmy}) {
     </div>
   );
 }
+
 
 export default BotCard;
