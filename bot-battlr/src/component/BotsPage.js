@@ -1,75 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import YourBotArmy from "./YourBotArmy";
-import axios from "axios";
-import BotCollection from "./BotCollection"
-//import BotCard from "./BotCard";
+import BotCollection from "./BotCollection";
+import BotSpecs from "./BotSpecs";
 
 function BotsPage() {
-  const [bots, setBots] = useState([]);
-  const [yourBots, setYourBots] = useState([]);
-  console.log(yourBots)
+  //start here with your code for step one
+  const [botCol, setBotCol] = useState([]);
+  const [botArmy, setBotArmy] = useState([]);
+  const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
-    axios.get("https://vercel1-smoky.vercel.app/bots")
-         .then((res)=>{
-          setYourBots(res.data)
-         })
-          .catch((error) => console.log(error));
-  }, []);
-
-  function addBotToArmy(bot) {
-    if (!yourBots.includes(bot)) return;
-    setYourBots([...yourBots, bot]);
-    
+    fetch("http://localhost:8002/bots")
+      .then((res) => res.json())
+      .then((data) => setBotCol(data));
+    }, []);
+    // console.log(botCol)
+    return (
+      <div>
+        <YourBotArmy botArmy={botArmy} setBotArmy={setBotArmy} setBotCol={setBotCol} />
+        {isActive ? (<BotSpecs bot={isActive} setIsActive={setIsActive} setBotArmy={setBotArmy}/>): 
+        (
+          <BotCollection setBotArmy={setBotArmy} botCol={botCol} botArmy={botArmy} setIsActive={setIsActive} />
+        )}
+      </div>
+    );
   }
   
-  function filt (bolt) {
-    setYourBots((yourBots) => yourBots.filter((yourBot) => yourBot.id !== bolt.id ))
-
-  }
-
-  function handleDelete (bot) {
-    axios.delete(`https://vercel1-smoky.vercel.app/bots/${bot.id}`)
-      .then(() => {
-        setBots((prevBots) => prevBots.filter(b => b.id !== bot.id));
-        setYourBots((prevYourBots) => prevYourBots.filter(b => b.id !== bot.id));
-      })
-      .catch((error) => console.log(error));
-  }
-  
-
-  // function deleteBot(bot) {
-  //   const updateYourBots = yourBots.filter((b) => b.id !== bot.id);
-  //   const updateBots = bots.filter((b) => b.id !== bot.id);
-
-  //   fetch(` http://localhost:/bots${bot.id}`, {
-  //     method: "DELETE",
-  //   }).then(() => {
-  //     setYourBots(updateYourBots)
-  //     setBots(updateBots)})
-  // }
-console.log(bots);
-  return (
-    <div>
-    
-      <YourBotArmy
-        yourBots={yourBots}
-        // addBotToArmy={addBotToArmy}
-        filt={filt}
-        
-        handleDelete={handleDelete}
-        
-        
-      />
-
-      <BotCollection
-        bots={bots}
-        addBotToArmy={addBotToArmy()}
-        handleDelete={handleDelete}
-        
-      />
-    </div>
-  );
-}
-
-export default BotsPage;
+  export default BotsPage;
