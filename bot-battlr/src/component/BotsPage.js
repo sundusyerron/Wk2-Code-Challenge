@@ -13,17 +13,17 @@ function BotsPage() {
     fetch("http://localhost:8002/bots")
       .then((res) => res.json())
       .then((data) => setBotCol(data));
-    }, []);
-    // console.log(botCol)
-    return (
-      <div>
-        <YourBotArmy botArmy={botArmy} setBotArmy={setBotArmy} setBotCol={setBotCol} />
-        {isActive ? (<BotSpecs bot={isActive} setIsActive={setIsActive} setBotArmy={setBotArmy}/>): 
-        (
-          <BotCollection setBotArmy={setBotArmy} botCol={botCol} botArmy={botArmy} setIsActive={setIsActive} />
-        )}
-      </div>
-    );
-  }
-  
-  export default BotsPage;
+  }, []);
+  // console.log(botCol)
+  return (
+    <div>
+      <YourBotArmy botArmy={botArmy} setBotArmy={setBotArmy} setBotCol={setBotCol} />
+      {isActive ? (<BotSpecs bot={isActive} setIsActive={setIsActive} setBotArmy={setBotArmy}/>): 
+      (
+        <BotCollection setBotArmy={setBotArmy} botCol={botCol} botArmy={botArmy} setIsActive={setIsActive} />
+      )}
+    </div>
+  );
+}
+
+export default BotsPage;
