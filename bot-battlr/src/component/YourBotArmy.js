@@ -1,11 +1,6 @@
 import React from "react";
 import BotCard from "./BotCard";
 
-function YourBotArmy({ yourBots, setYourBots, deleteBot }) {
-  function removeBotFromArmy(bot) {
-    const newArmy = yourBots.filter((b) => b.id !== bot.id);
-    setYourBots(newArmy);
-  }
 function YourBotArmy({ yourBots, addBotToArmy, handleDelete }) {
 
 
@@ -16,17 +11,12 @@ function YourBotArmy({ yourBots, addBotToArmy, handleDelete }) {
           {yourBots.map((bot) => {
             return (
               <BotCard
-                bot={bot}
-                key={bot.id}
-                removeBotFromArmy={removeBotFromArmy}
-                deleteBot={deleteBot}
-                isInArmy={true}
               key={bot.id} 
               bot={bot}
               handleAdd={addBotToArmy}
               handleDelete={handleDelete}
               />
-
+                
             );
           })}
           Your Bot Army
@@ -35,4 +25,5 @@ function YourBotArmy({ yourBots, addBotToArmy, handleDelete }) {
     </div>
   );
 }
+
 export default YourBotArmy;
