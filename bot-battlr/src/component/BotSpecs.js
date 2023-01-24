@@ -1,4 +1,5 @@
 import React from "react";
+
 const botTypeClasses = {
   Assault: "icon military",
   Defender: "icon shield",
@@ -8,7 +9,7 @@ const botTypeClasses = {
   Captain: "icon star",
 };
 
-// function BotSpecs({ bot}) {
+
 function BotSpecs({ bot }) {
   return (
     <div className="ui segment">
