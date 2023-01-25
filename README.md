@@ -1,10 +1,7 @@
 # Wk2-Code-Challenge
 ## React Immersive Code Challenge: Bot Battlr
-Welcome to Bot Battlr, the one and only spot in the known universe where you can custom build your own Bot Army! This is our app:
+Welcome to Bot Battlr, the one and only spot in the known universe where you can custom build your own Bot Army!
 
-checkpoint demo
-
-Here's the scenario: a galactic overlord has hired you, a galactic web developer, to develop a galactic web app that will allow them to browse through a list of robots, view a robot's details, and, enlist a bot into their army.
 
 ## Instructions
 For this project, you’ll be building out a React application that displays a list of available bots, among other features. Try your best to find the right places to insert code into the established code base.
@@ -17,12 +14,11 @@ After unbundling the project:
 Run npm install in your terminal.
 Run npm run server. This will run your backend on port 8002.
 In a new terminal, run npm start. This will run your React app on port 8000.
-Make sure to open http://localhost:8002/bots in the browser to verify that your backend is working before you proceed!
+Make sure to open https://botbattlrrr.vercel.app/in the browser to verify that your backend is working before you proceed!
 
-The base URL for your backend is: http://localhost:8002
-
+The base URL for your backend is: https://botbattlrrr.vercel.app/
 ## What You Already Have
-BotPage is the highest component below App, and serves as the main container for all of the pieces of the page.
+BotPage is the highest component, and serves as the main container for all of the pieces of the page.
 
 BotCollection and YourBotArmy are container components, which are children of BotPage. BotCollection is where all the bots will be displayed, while YourBotArmy (the green portion on the top of the screen) will only display the bots that have been selected by the user.
 
@@ -67,23 +63,8 @@ Example Response:
     "updated_at": "2018-10-02T19:55:10.827Z"
   }
 ]
-# DELETE /bots/:id
-Example Response:
 
-{}
-# Advanced Deliverables
-These deliverables are not required to pass the code challenge, but if you have the extra time, or even after the code challenge, they are a great way to stretch your skills.
 
-Note: If you are going to attempt these advanced deliverables, please be sure to have a working commit with all the Core Deliverables first!
-
-As a user, I should be able to:
-
-Choose if I want to enlist a bot into my army or just see their data. Clicking on the card should instead display a show view (BotSpecs) for that bot, which should replace BotsCollection. BotSpecs should have two buttons: one to go back to the list view and another to enlist that bot. Your app could look like the following:
-Full demo
-
-Sort bots by their health, damage or armor. For this, create a new component, SortBar.
-When I enlist a bot it will be removed from the BotCollection and added to YourBotArmy.
-Filter bots by their class. We can select a few filters at the same time.
-Sort bots by their health, damage or armor. For this, create a new component, SortBar.
-Only enlist one bot from each bot_class. The classes are ["Support", "Medic", "Assault", "Defender", "Captain", "Witch"].
+# Auther
+project contributed by (Sundus)
 
