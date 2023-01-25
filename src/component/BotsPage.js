@@ -10,7 +10,7 @@ function BotsPage() {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:8002/bots")
+    fetch("https://dbjsonnnnn.vercel.app/bots")
       .then((res) => res.json())
       .then((data) => setBotCol(data));
   }, []);
